@@ -425,17 +425,23 @@ async function loadSellerProducts() {
   function showDeleteConfirmation(callback) {
     const popup = document.getElementById('popup-message');
     popup.innerHTML = `
-      <span style="display:inline-block;width:48px;height:48px;border-radius:50%;background:#ff5858;display:flex;align-items:center;justify-content:center;margin-bottom:0.2em;">
-        <svg width="28" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6L14 14M14 6L6 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
-      </span>
-      <span style="font-size:1rem;font-weight:500;">Delete this product?</span>
-      <div style="display:flex;gap:1.2rem;margin-top:0.7em;">
-        <button id="confirm-delete-yes" style="background:#28a745;color:#fff;padding:0.4em 1.2em;border:none;border-radius:18px;font-weight:600;cursor:pointer;">Yes</button>
-        <button id="confirm-delete-no" style="background:#888;color:#fff;padding:0.4em 1.2em;border:none;border-radius:18px;font-weight:600;cursor:pointer;">No</button>
+      <div style="background:#fff;padding:2.2em 2em 1.5em 2em;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.18);display:flex;flex-direction:column;align-items:center;min-width:260px;max-width:95vw;">
+        <span style="display:inline-block;width:48px;height:48px;border-radius:50%;background:#ff5858;display:flex;align-items:center;justify-content:center;margin-bottom:0.7em;">
+          <svg width="28" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6L14 14M14 6L6 14" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </span>
+        <span style="font-size:1.13rem;font-weight:600;color:#222;margin-bottom:0.7em;">Delete this product?</span>
+        <div style="display:flex;gap:0.7em;margin-top:0.7em;flex-direction:column;align-items:center;width:100%;">
+          <button id="confirm-delete-yes" style="background:#28a745;color:#fff;padding:0.7em 1em;display:block;border:none;border-radius:18px;font-size:1.08em;font-weight:600;cursor:pointer;width:100%;max-width:260px;transition:background 0.18s;">Yes, Delete</button>
+          <button id="confirm-delete-no" style="background:#888;color:#fff;padding:0.7em 1em;display:block;border:none;border-radius:18px;font-size:1.08em;font-weight:600;cursor:pointer;width:100%;max-width:260px;transition:background 0.18s;">Cancel</button>
+        </div>
       </div>
     `;
     popup.style.display = 'flex';
     popup.style.opacity = '1';
+    popup.style.alignItems = 'center';
+    popup.style.justifyContent = 'center';
+    popup.style.background = 'rgba(0,0,0,0.32)';
+    popup.style.backdropFilter = 'blur(2px)';
 
     const yesBtn = popup.querySelector('#confirm-delete-yes');
     const noBtn = popup.querySelector('#confirm-delete-no');
