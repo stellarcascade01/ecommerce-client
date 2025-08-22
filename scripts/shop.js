@@ -23,7 +23,7 @@ async function loadSellerShop(sellerId) {
   sellerInfoDiv.innerHTML = '';
   try {
         // Fetch all products (could be optimized with a backend filter)
-    const res = await fetch('http://localhost:5000/api/products');
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products');
     const products = await res.json();
     const sellerProducts = products.filter(p => {
       if (!p.seller) return false;
@@ -43,7 +43,7 @@ async function loadSellerShop(sellerId) {
     let sellerUsername = '';
     try {
       // Fetch latest seller info
-      const sellerRes = await fetch(`http://localhost:5000/api/users/${sellerIdStr}`);
+      const sellerRes = await fetch(`https://ecommerce-server-cq95.onrender.com/api/users/${sellerIdStr}`);
       if (sellerRes.ok) {
         const sellerUser = await sellerRes.json();
         shopName = sellerUser.shopName && sellerUser.shopName.trim() ? sellerUser.shopName : '';

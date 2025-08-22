@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let user = null;
   // Load user info from backend
   try {
-    const res = await fetch('http://localhost:5000/api/users/me', {
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/users/me', {
       headers: { 'Authorization': 'Bearer ' + token }
     });
     if (res.ok) {
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const patchBody = { username, email };
       if (user.role === 'seller') patchBody.shopName = shopName;
       try {
-        const res = await fetch('http://localhost:5000/api/users/me', {
+        const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/users/me', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

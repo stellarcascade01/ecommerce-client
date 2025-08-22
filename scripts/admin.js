@@ -20,7 +20,7 @@ async function loadPendingProducts() {
   if (spinner) spinner.style.display = 'block';
   tbody.innerHTML = '';
   try {
-    const res = await fetch('http://localhost:5000/api/products/pending', {
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products/pending', {
       headers: { 'Authorization': 'Bearer ' + token }
     });
     const products = await res.json();
@@ -72,7 +72,7 @@ async function loadPendingProducts() {
 // Update product status
 async function updateProductStatus(productId, status, reason) {
   try {
-    const res = await fetch(`http://localhost:5000/api/products/${productId}/status`, {
+    const res = await fetch(`https://ecommerce-server-cq95.onrender.com/api/products/${productId}/status`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activateTab(tabPastProducts, pastProductsSection);
     // Load past products
     try {
-      const res = await fetch('http://localhost:5000/api/products?approvedOnly=false');
+      const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products?approvedOnly=false');
       const products = await res.json();
       pastProductsTableBody.innerHTML = '';
       products.filter(p => p.status === 'approved' || p.status === 'rejected').forEach(product => {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activateTab(tabUsers, usersSection);
     // Load users
     try {
-      const res = await fetch('http://localhost:5000/api/users', {
+      const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/users', {
         headers: { 'Authorization': 'Bearer ' + token }
       });
       const users = await res.json();
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const action = isBlocked ? 'unblock' : 'block';
           if (!confirm(`Are you sure you want to ${action} this user?`)) return;
           try {
-            const res = await fetch(`http://localhost:5000/api/users/${userId}/${action}`, {
+            const res = await fetch(`https://ecommerce-server-cq95.onrender.com/api/users/${userId}/${action}`, {
               method: 'PATCH',
               headers: { 'Authorization': 'Bearer ' + token }
             });
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const userId = btn.dataset.id;
           if (!confirm('Are you sure you want to delete this user? This cannot be undone.')) return;
           try {
-            const res = await fetch(`http://localhost:5000/api/users/${userId}`, {
+            const res = await fetch(`https://ecommerce-server-cq95.onrender.com/api/users/${userId}`, {
               method: 'DELETE',
               headers: { 'Authorization': 'Bearer ' + token }
             });

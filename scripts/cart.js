@@ -25,7 +25,7 @@ if (window.updateCartCount) {
 // Fetch product data from backend for given ids
 async function fetchProductsByIds(ids) {
   try {
-    const res = await fetch('http://localhost:5000/api/products');
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products');
     const allProducts = await res.json();
     return allProducts.filter(p => ids.includes(p._id));
   } catch (err) {

@@ -126,7 +126,7 @@ document.getElementById('upload-product-form').addEventListener('submit', async 
   uploadBtn.disabled = true;
 
   try {
-    const res = await fetch('http://localhost:5000/api/products', {
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + token },
       body: formData
@@ -246,7 +246,7 @@ async function loadSellerProducts() {
   document.getElementById('empty-message').textContent = '';
 
   try {
-    const res = await fetch('http://localhost:5000/api/products', {
+    const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products', {
       headers: { 'Authorization': 'Bearer ' + token }
     });
     const products = await res.json();
@@ -398,7 +398,7 @@ async function loadSellerProducts() {
       showDeleteConfirmation(async (confirmed) => {
         if (confirmed) {
           try {
-            const res = await fetch(`http://localhost:5000/api/products/${btn.dataset.id}`, {
+            const res = await fetch(`https://ecommerce-server-cq95.onrender.com/api/products/${btn.dataset.id}`, {
               method: 'DELETE',
               headers: { 'Authorization': 'Bearer ' + token }
             });
