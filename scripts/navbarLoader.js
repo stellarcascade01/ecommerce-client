@@ -407,22 +407,16 @@ if (token) {
   }
   const username = (user && user.username) ? user.username : (localStorage.getItem('username') || 'User');
   let dashboardLink = '';
-  let pastOrdersLink = '';
   if (role === 'admin') {
     dashboardLink = '<a href="admin.html" class="dropdown-item">Go to Dashboard</a>';
-    // No past orders for admin
   } else if (role === 'seller') {
     dashboardLink = '<a href="seller.html" class="dropdown-item">Go to Dashboard</a>';
-    // No past orders for seller
-  } else {
-    pastOrdersLink = '<a href="order-history.html" class="dropdown-item">Past Orders</a>';
   }
   userSpan.innerHTML = `
     <div class="nav-user-dropdown">
       <span id="nav-username" class="nav-username" style="cursor:pointer;user-select:none;">${username} <i class="fa fa-caret-down" style="font-size:0.9em;"></i></span>
       <div class="dropdown-menu" id="user-dropdown-menu" style="display:none;">
         <a href="profile.html" class="dropdown-item">View Profile</a>
-        ${pastOrdersLink}
         ${dashboardLink}
         <button id="logout-btn" class="dropdown-item" style="width:100%;text-align:left;background:none;border:none;padding:0.5em 1em;">Logout</button>
       </div>
