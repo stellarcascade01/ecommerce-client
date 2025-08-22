@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (itemsWithMissingInfo.length > 0) {
         // Fetch all products from backend (could optimize to fetch only needed, but this is simple)
         try {
-          const res = await fetch('http://localhost:5000/api/products');
+          const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products');
           const products = await res.json();
           // Map productId to product
           const productMap = {};
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch('http://localhost:5000/api/orders', {
+    fetch('https://ecommerce-server-cq95.onrender.com/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

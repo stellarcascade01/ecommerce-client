@@ -29,7 +29,7 @@ function getProductId() {
 }
 
 function fetchProduct(id) {
-  fetch(`http://localhost:5000/api/products/${id}`)
+  fetch(`https://ecommerce-server-cq95.onrender.com/api/products/${id}`)
     .then(res => {
       if (!res.ok) throw new Error('Product not found');
       return res.json();
@@ -90,7 +90,7 @@ function renderProduct(product) {
   if (linkDiv && product.seller) {
     let sellerId = typeof product.seller === 'string' ? product.seller : product.seller._id;
     if (sellerId) {
-      fetch(`http://localhost:5000/api/users/${sellerId}`)
+      fetch(`https://ecommerce-server-cq95.onrender.com/api/users/${sellerId}`)
         .then(res => res.ok ? res.json() : null)
         .then(sellerUser => {
           let shopName = '';
@@ -178,7 +178,7 @@ const reviewFormContainer = document.getElementById('review-form-container');
 const user = JSON.parse(localStorage.getItem('user'));
 
 function fetchReviews(productId) {
-  fetch(`http://localhost:5000/api/products/${productId}/reviews`)
+  fetch(`https://ecommerce-server-cq95.onrender.com/api/products/${productId}/reviews`)
     .then(res => res.json())
     .then(reviews => renderReviews(reviews))
     .catch(() => { reviewsList.textContent = 'No reviews yet.'; });
@@ -234,7 +234,7 @@ function renderReviewForm(productId) {
       return;
     }
     const comment = document.getElementById('review-comment').value.trim();
-    fetch(`http://localhost:5000/api/products/${productId}/reviews`, {
+    fetch(`https://ecommerce-server-cq95.onrender.com/api/products/${productId}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ function renderReviewForm(productId) {
 const recommendedDiv = document.getElementById('recommended-products');
 function fetchRecommended(productId) {
   // Fetch all products to recommend from same category or same shop
-  fetch(`http://localhost:5000/api/products`)
+  fetch(`https://ecommerce-server-cq95.onrender.com/api/products`)
     .then(res => res.json())
     .then(allProducts => {
       if (!loadedProduct) return renderRecommended([]);

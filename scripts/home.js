@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchProducts() {
     try {
-      const res = await fetch('http://localhost:5000/api/products?approvedOnly=true');
+      const res = await fetch('https://ecommerce-server-cq95.onrender.com/api/products?approvedOnly=true');
       products = await res.json();
       displayProducts();
       updateCartCount();
