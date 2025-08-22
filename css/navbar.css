@@ -1,0 +1,113 @@
+/* navbar.css - Consistent navigation bar styles for all dashboards */
+#navbar-placeholder nav {
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(60,120,80,0.07);
+  border-radius: 14px;
+  padding: 0.7rem 2.2rem;
+  margin-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-size: 1.08rem;
+  color: #22352f;
+}
+#navbar-placeholder nav a, #navbar-placeholder nav button, #navbar-placeholder nav .nav-link {
+  color: #22352f;
+  text-decoration: none;
+  margin: 0 1.1rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.08rem;
+  transition: color 0.15s;
+}
+#navbar-placeholder nav a:hover, #navbar-placeholder nav .nav-link:hover {
+  color: #356842;
+}
+#navbar-placeholder .navbar-dropdown {
+  position: relative;
+  display: inline-block;
+}
+#navbar-placeholder .dropdown-toggle {
+  background: #e3fced;
+  color: #22352f;
+  border: 1.5px solid #b1d1be;
+  border-radius: 18px;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+#navbar-placeholder .dropdown-toggle:hover {
+  background: #eaf6f1;
+  color: #356842;
+  border-color: #75ac5e;
+}
+#navbar-placeholder .dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #fff;
+  min-width: 170px;
+  box-shadow: 0 2px 16px rgba(60,120,80,0.10);
+  border-radius: 12px;
+  z-index: 100;
+  padding: 0.5rem 0;
+  font-size: 1.05rem;
+}
+#navbar-placeholder .dropdown-menu.show {
+  display: block;
+}
+#navbar-placeholder .dropdown-menu a, #navbar-placeholder .dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  color: #22352f;
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: 500;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.13s, color 0.13s;
+}
+#navbar-placeholder .dropdown-menu a:hover, #navbar-placeholder .dropdown-menu button:hover {
+  background: #e3fced;
+  color: #356842;
+}
+#navbar-placeholder .navbar-cart {
+  margin-left: 1.2rem;
+  font-size: 1.25rem;
+  color: #356842;
+  position: relative;
+}
+#navbar-placeholder .navbar-cart .cart-count {
+  position: absolute;
+  top: -7px;
+  right: -13px;
+  background: #ff5858;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  padding: 2px 7px;
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  #navbar-placeholder nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 0.7rem;
+    font-size: 0.98rem;
+  }
+  #navbar-placeholder nav a, #navbar-placeholder nav .nav-link {
+    margin: 0 0.5rem 0.5rem 0;
+    font-size: 0.98rem;
+  }
+  #navbar-placeholder .dropdown-menu {
+    min-width: 120px;
+    font-size: 0.98rem;
+  }
+}

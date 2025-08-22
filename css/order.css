@@ -1,0 +1,234 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Scope all styles under #order-container */
+#order-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+#order-container input[type="email"],
+#order-container input[type="tel"],
+#order-container input[type="text"],
+#order-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+#order-container h1 {
+  margin-top: 90px;
+  color: #444;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+#order-container form {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+#order-container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+#order-container button {
+  font-family: sans-serif;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+  background-color: #84e77c;
+  color: rgb(252, 251, 251);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#order-container button:hover {
+  background-color: #318b1a;
+}
+
+#order-container #order-status {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+  text-align: center;
+  width: 100%;
+}
+
+#order-container #order-summary {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+#order-container #order-summary h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+#order-container #order-summary ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+#order-container #payment-options {
+  margin-top: 30px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#order-container #payment-options h3 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+#order-container #payment-options div {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+#order-container #payment-options a {
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  padding: 5px;
+  background: #f8f8f8;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#order-container #payment-options a:hover,
+#order-container #payment-options a:focus {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+#order-container #payment-options img {
+  width: 100px;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Dark mode */
+body.dark {
+  background: #1f2a23;
+  color: #d0e7d6;
+}
+
+body.dark #order-container,
+body.dark #order-container h1,
+body.dark #order-container nav.user-navbar,
+body.dark #order-container #cart-container,
+body.dark #order-container form,
+body.dark #order-container #order-summary {
+  background: #26322c;
+  color: #d0e7d6;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+body.dark #order-container .product,
+body.dark #order-container .cart-item {
+  background: #273f3c;
+  color: #eee;
+  border-radius: 6px;
+}
+
+body.dark #order-container form label {
+  color: #d0e7d6;
+}
+
+body.dark #order-container input[type="text"],
+body.dark #order-container textarea,
+body.dark #order-container input[type="email"],
+body.dark #order-container input[type="tel"] {
+  background: #273f3c;
+  color: #eee;
+  border: 1px solid #3a4d46;
+  border-radius: 4px;
+}
+
+body.dark #order-container input[type="text"]::placeholder,
+body.dark #order-container textarea::placeholder {
+  color: #a6c0b6;
+}
+
+body.dark #order-container button {
+  background: #2e5834;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+body.dark #order-container button:hover {
+  background-color: #3a9a38;
+}
+
+body.dark #order-container #order-status {
+  color: #92cc94;
+  font-weight: bold;
+}
+
+body.dark #order-container #order-summary ul {
+  color: #d0e7d6;
+}
+
+body.dark #order-container a {
+  color: #aeffd6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.dark #order-container a:hover {
+  color: #7fbfff;
+  text-decoration: none;
+}

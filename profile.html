@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div class="profile-wrapper">
+    <h2>My Profile</h2>
+    <div class="profile-card">
+      <div class="profile-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="profile-info">
+        <div><strong>Username:</strong> <span id="profile-username">Loading...</span></div>
+        <div><strong>Email:</strong> <span id="profile-email">Loading...</span></div>
+        <div><strong>Role:</strong> <span id="profile-role">Loading...</span></div>
+      </div>
+    </div>
+    <button id="edit-profile-btn">Edit Profile</button>
+    <div id="edit-profile-form" style="display:none;"></div>
+    
+  </div>
+  <script src="scripts/navbarLoader.js"></script>
+  <script src="scripts/profile.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show dashboard button only for admin
+      const role = localStorage.getItem('role');
+      if (role === 'admin') {
+        document.getElementById('go-dashboard-btn').style.display = 'inline-block';
+      }
+      document.getElementById('go-dashboard-btn').onclick = function() {
+        window.location.href = 'admin.html';
+      };
+      document.getElementById('go-home-btn').onclick = function() {
+        window.location.href = 'home.html';
+      };
+    });
+  </script>
+</body>
+</html>

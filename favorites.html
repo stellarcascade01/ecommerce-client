@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Favorites</title>
+  <link rel="stylesheet" href="css/favorites.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div class="content-wrapper" style="padding-top: 2.5rem;">
+    <h2 style="text-align:center;margin-top:2.5rem;">Favorite Products</h2>
+    <section id="favorites-list" class="product-grid"></section>
+    <div id="no-favorites" style="text-align:center;color:#888;margin-top:2.5rem;display:none;">No favorite products yet.</div>
+  </div>
+
+  <script src="scripts/navbarLoader.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Helper to format price in Taka
+      function formatTaka(amount) {
+        return `৳${amount?.toFixed(2) || ''}`;
+      }
+
+      function renderFavorites() {
+        const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+        const list = document.getElementById('favorites-list');
+        const noFav = document.getElementById('no-favorites');
+
+        if (!favs.length) {
+          list.innerHTML = '';
+          noFav.style.display = 'block';
+          return;
+        }
+        noFav.style.display = 'none';
+
+        list.innerHTML = favs.map(f => `
+          <div class="product" data-id="${f.productId}" style="cursor:pointer;">
+            <div class="product-info" style="text-align:center;user-select:none;">
+              <img src="${f.image}" alt="${f.name}">
+              <h3 style="text-decoration:none;color:inherit;">${f.name}</h3>
+              <p style="text-decoration:none;color:inherit;">${formatTaka(f.price)}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;margin-top:0.5em;gap:0.7em;">
+              <button class="add-to-cart" data-id="${f.productId}" style="margin-bottom:0.3em;">Add to Cart</button>
+              <button class="remove-fav" title="Remove from favorites" data-id="${f.productId}" style="background:none;border:none;cursor:pointer;">
+                <i class="fa-solid fa-heart" style="color:#e74c3c;font-size:1.2em;"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        // Make product card clickable except on buttons
+        document.querySelectorAll('.product').forEach(card => {
+          card.addEventListener('click', function(e) {
+            if (
+              e.target.closest('.add-to-cart') ||
+              e.target.closest('.remove-fav')
+            ) return;
+            const id = this.getAttribute('data-id');
+            if (id) {
+              window.location.href = `product.html?id=${id}`;
+            }
+          });
+        });
+
+        // Remove favorite logic
+        document.querySelectorAll('.remove-fav').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            let favs = JSON.parse(localStorage.getItem('favorites')) || [];
+            favs = favs.filter(f => f.productId !== id);
+            localStorage.setItem('favorites', JSON.stringify(favs));
+            if (window.updateFavoritesCount) window.updateFavoritesCount();
+            renderFavorites();
+          });
+        });
+
+        // Add to cart logic
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            const prod = favs.find(f => f.productId === id);
+            if (!prod) return;
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const idx = cart.findIndex(item => item.productId === id);
+            if (idx > -1) {
+              cart[idx].quantity += 1;
+            } else {
+              cart.push({
+                productId: prod.productId,
+                name: prod.name,
+                price: prod.price,
+                image: prod.image,
+                quantity: 1
+              });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            if (window.updateCartCount) window.updateCartCount();
+          });
+        });
+
+        // Buy Now logic
+        // Buy Now button and logic removed from favorites page
+      }
+
+      renderFavorites();
+    });
+  </script>
+</body>
+</html>

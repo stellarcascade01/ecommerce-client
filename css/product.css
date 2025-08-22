@@ -1,0 +1,265 @@
+/* =========================
+   Dark Mode
+========================= */
+body.dark {
+  background: #181c1f;
+  color: #e0e6eb;
+}
+body.dark .container {
+  background: #23282d;
+  color: #e0e6eb;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+}
+body.dark .product-info h1,
+body.dark .product-info,
+body.dark .description,
+body.dark .price {
+  color: #e0e6eb;
+}
+body.dark .actions button,
+body.dark .actions .add-to-cart,
+body.dark .actions .buy-now {
+  background: #2e3a2e;
+  color: #e0e6eb;
+  border: 1px solid #3e4e3e;
+}
+body.dark .actions button:hover,
+body.dark .actions .add-to-cart:hover,
+body.dark .actions .buy-now:hover {
+  background: #356842;
+  color: #fff;
+}
+body.dark .seller-shop-link {
+  background: #2e3a2e;
+  color: #b6f7b0;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.18);
+}
+body.dark .seller-shop-link:hover {
+  background: #356842;
+  color: #fff;
+}
+body.dark .reviews {
+  background: #23282d;
+  color: #e0e6eb;
+}
+body.dark .reviews h3 {
+  color: #b6f7b0;
+}
+body.dark .review strong {
+  color: #b6f7b0;
+}
+body.dark .review p {
+  color: #e0e6eb;
+}
+body.dark .recommended-section {
+  background: #23282d;
+  color: #e0e6eb;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+body.dark .rec-card {
+  background: #23282d;
+  color: #e0e6eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+body.dark .rec-card-name {
+  color: #b6f7b0;
+}
+body.dark .rec-card-price {
+  color: #84e77c;
+}
+body.dark .rec-card-view {
+  color: #b6f7b0;
+}
+body.dark .rec-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.28);
+}
+body.dark .product-image img {
+  background: #23282d;
+  border: 1px solid #333;
+}
+/* Seller Shop Link Button */
+.seller-shop-link {
+  background: #e6fbe6;
+  color: #356842;
+  padding: 0.5em 1.2em;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(64,96,80,0.08);
+  font-size: 1.08em;
+  transition: background 0.18s, color 0.18s;
+}
+.seller-shop-link:hover {
+  background: #b6f7b0;
+  color: #22352f;
+}
+/* =========================
+   General Reset
+========================= */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* =========================
+   Container
+========================= */
+.container {
+  width: 90%;
+  max-width: 1200px;  /* wider for desktop */
+  margin: 20px auto;
+
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   Product Section
+========================= */
+.product {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Product Image */
+.product-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Product Info */
+.product-info {
+  flex: 2;
+}
+
+.product-info h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.actions button {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  background: #94cc60; /* soft sage */
+  color: #020303;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.actions button:hover {
+  background: #356842; /* deeper sage */
+  color: #fff;
+}
+
+.actions .add-to-cart, .actions .buy-now {
+  background: #94cc60;
+  color: #020303;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+.actions .add-to-cart:hover, .actions .buy-now:hover {
+  background: #356842;
+  color: #fff;
+}
+.actions .add-to-cart {
+  background: #d6f896;
+  color: #264216;
+}
+
+.actions .add-to-cart:hover {
+  background: #1e6e1b;
+  color: #fff;
+}
+
+.actions .buy-now {
+  background: #ffaa48;
+  color: #333;
+}
+
+.actions .buy-now:hover {
+  background: #be700a;
+}
+
+/* =========================
+   Reviews Section
+========================= */
+.reviews {
+  margin-top: 50px;
+}
+
+.reviews h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #356842;
+  font-weight: 700;
+  font-size: 1.18em;
+  padding: 0.22em 1.1em;
+  border-radius: 14px;
+ /* width: 100%; removed to allow container to control width */
+}
+
+.review strong {
+  font-size: 1.1rem;
+}
+
+.review p {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 992px) {
+  .product {
+    flex-direction: column;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+
+.reviews {
+  margin-top: 50px;
+  width: 100%;
+  /* Remove any max-width or margin restrictions here */
+}
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop</title>
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div style="display:flex;align-items:center;gap:1.2em;margin-bottom:1.5em;">
+    <button id="back-dashboard-link" type="button" style="display:flex;align-items:center;gap:0.5em;background:#e6fbe6;color:#356842;border:none;border-radius:18px;font-weight:700;font-size:1.1em;padding:0.45em 1.2em;box-shadow:0 1px 4px rgba(64,96,80,0.08);cursor:pointer;transition:background 0.18s, color 0.18s;">
+      <span style="font-size:1.3em;line-height:1;">&#8592;</span>
+      <span>Go Back</span>
+    </button>
+    <h1 id="shop-title" style="margin:0;font-size:2rem;color:#22352f;">Shop</h1>
+  </div>
+  <div id="seller-info" style="margin-bottom:1.5em;"></div>
+  <div id="shop-products-container">
+    <div id="shop-products-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5em;"></div>
+    <div id="shop-empty-message" style="text-align:center;color:#888;margin-top:2em;"></div>
+  </div>
+  <script src="scripts/navbarLoader.js"></script>
+  <script>
+    // Make dashboard link act as 'Go Back' button
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('back-dashboard-link');
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.history.length > 1 ? window.history.back() : window.location.href = 'home.html';
+        });
+        btn.addEventListener('mouseover', function() {
+          btn.style.background = '#d4f7d4';
+        });
+        btn.addEventListener('mouseout', function() {
+          btn.style.background = '#e6fbe6';
+        });
+      }
+    });
+  </script>
+  <script src="scripts/shop.js"></script>
+</body>
+</html>

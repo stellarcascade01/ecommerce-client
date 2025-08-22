@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller Dashboard - Upload Product</title>
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+
+<body>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2em;">
+    <h1 style="margin:0;">Seller Dashboard</h1>
+    <div style="display:flex;gap:1em;">
+      <button id="home-btn">Go to Homepage</button>
+      <button id="view-shop-btn">View My Shop</button>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </div>
+
+  <form id="upload-product-form" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Product Name" required />
+   <input type="number" name="price" placeholder="Price" min="0" step="0.01" required />
+    <input type="number" name="quantity" placeholder="Quantity" min="0" step="1" required  />
+   <input type="file" name="imageFile" accept="image/*,video/*" id="mediaFileInput" multiple />
+    <div id="image-preview-container" style="display:none;align-items:center;gap:8px;margin-bottom:8px;"></div>
+    <select name="category" id="category-select">
+      <option value="">Select Category</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Accessories">Accessories</option>
+      <option value="Cameras">Cameras</option>
+      <option value="Kitchen">Kitchen</option>
+      <option value="Sports">Sports</option>
+      <option value="Stationery">Stationary</option>
+      <option value="Groceries">Groceries</option>
+      <option value="Pet Supplies">Pet Supplies</option>
+      <option value="Personal Care">Personal Care</option>
+      <option value="Household">Household</option>
+    </select>
+    <textarea name="description" placeholder="Description (optional)" rows="4"></textarea>
+     <button type="submit" id="upload-btn">Upload Product</button>
+    <div id="form-message" style="margin-top:8px;"></div>
+  </form>
+
+  <div id="upload-summary-container" style="display:none;margin:1.5rem 0 0 0;padding:1.2rem;background:#f6fbf8;border-radius:12px;box-shadow:0 2px 12px rgba(60,120,80,0.07);color:#22352f;">
+    <h3 style="margin-top:0;margin-bottom:0.7em;font-size:1.15rem;color:#356842;">Product Uploaded</h3>
+    <div id="upload-summary-content"></div>
+  </div>
+
+  <!-- Performance summary moved below product history -->
+  <h2>Your Product History</h2>
+  <div style="margin-bottom:1rem;">
+    <button id="pending-tab" class="tab-btn">Pending</button>
+    <button id="approved-tab" class="tab-btn" style="margin-right:10px;">Approved</button>
+    <button id="rejected-tab" class="tab-btn" style="margin-right:10px;">Rejected</button>
+    
+  </div>
+  <div id="loading-spinner" style="display:none;text-align:center;margin:1rem 0;">Loading...</div>
+  <table id="seller-products-table">
+    <thead>
+      <tr id="table-header-row">
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Sold</th>
+        <th>Image</th>
+        <th>Avg Rating</th>
+        <th>Reviews</th>
+        <th>Status</th>
+      </tr>
+       <th>Status</th>
+       <th>Action</th>
+    <tbody>
+      <!-- Seller products will load here -->
+    </tbody>
+  </table>
+  <div id="empty-message" style="text-align:center;color:#888;margin-top:1rem;"></div>
+  <div id="performance-summary" style="background:#f6fbf8;border-radius:12px;box-shadow:0 2px 12px rgba(60,120,80,0.07);color:#22352f;padding:1.1rem 1.5rem;margin:2.2rem auto 1.5rem auto;max-width:600px;">
+    <h2 style="margin-top:0;margin-bottom:0.7em;font-size:1.15rem;color:#356842;">Performance Summary</h2>
+    <div id="summary-content" style="font-size:1.05em;"></div>
+    <canvas id="performance-graph" width="540" height="180" style="margin-top:1.2em;max-width:100%;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(60,120,80,0.07);"></canvas>
+  </div>
+  <div id="popup-message" style="display:none;opacity:0;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.82);border-radius:32px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:1.3rem 1.8rem;z-index:1000;font-size:1.1rem;font-weight:600;min-width:80px;min-height:80px;text-align:center;color:#fff;backdrop-filter:blur(2px);transition:opacity 0.2s;line-height:1.2;letter-spacing:0.5px;display:flex;flex-direction:column;align-items:center;gap:0.3rem;"></div>
+
+  <script src="scripts/seller.js"></script>
+  <div id="empty-message" style="text-align:center;color:#888;margin-top:1rem;"></div>
+  <div id="popup-message" style="display:none;opacity:0;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.82);border-radius:32px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:1.3rem 1.8rem;z-index:1000;font-size:1.1rem;font-weight:600;min-width:80px;min-height:80px;text-align:center;color:#fff;backdrop-filter:blur(2px);transition:opacity 0.2s;line-height:1.2;letter-spacing:0.5px;display:flex;flex-direction:column;align-items:center;gap:0.3rem;"></div>
+
+<script src="scripts/seller.js"></script>
+
+</body>
+</html>

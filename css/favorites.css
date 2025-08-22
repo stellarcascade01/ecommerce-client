@@ -1,0 +1,85 @@
+/* Match home page grid layout for favorite products */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  flex: 1;
+  background: #ffffff;
+  border-radius: 8px;
+}
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  background: #e2f0e9;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  color: #2f4d40;
+  box-shadow: 0 0 5px rgba(64, 96, 80, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.fav-btn, .remove-fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+}
+
+.heart-icon {
+  color: #e74c3c;
+  font-size: 1.3em;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.fav-btn:hover .heart-icon, .remove-fav:hover .heart-icon {
+  color: #b91c1c;
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 6px rgba(231,76,60,0.12));
+}
+
+.product img {
+  max-width: 100%;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.product:hover img {
+  transform: scale(1.2);
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+button {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  background: #94cc60;
+  color: #020303;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #356842;
+  color: #fff;
+}

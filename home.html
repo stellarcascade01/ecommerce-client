@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopZone</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <!-- Hero Section: Carousel Slider -->
+  <section class="hero-carousel">
+    <div class="carousel-slides">
+      <div class="carousel-slide active">
+        <img src="images/hero1.png" alt="Shop the latest trends" />
+        <div class="carousel-caption">
+          
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="images/hero2.png" alt="Best Deals" />
+        <div class="carousel-caption">
+          
+        </div>
+      </div>
+      <!-- <div class="carousel-slide">
+        <img src="images/hero3.png" alt="Fast Delivery" />
+        <div class="carousel-caption">
+        </div>
+      </div> -->
+      <div class="carousel-slide">
+        <img src="images/hero4.jpg" alt="Quality Products" />
+        <div class="carousel-caption">
+        </div>
+    </div>
+    <button class="carousel-btn prev" aria-label="Previous Slide">&#10094;</button>
+    <button class="carousel-btn next" aria-label="Next Slide">&#10095;</button>
+    <a href="#products" class="shop-now-btn">Shop Now</a>
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </section>
+
+  <!-- Main Content with Sidebar -->
+  <section class="main-content">
+    <aside class="sidebar">
+      <h3>Filter by Category</h3>
+      <ul class="category-list">
+        <li data-category="all" class="active">All Categories</li>
+        <li data-category="Electronics">Electronics</li>
+        <li data-category="Clothing">Clothing</li>
+        <li data-category="Accessories">Accessories</li>
+        <li data-category="Cameras">Cameras</li>
+        <li data-category="Kitchen">Kitchen</li>
+        <li data-category="Sports">Sports</li>
+        <li data-category="Stationery">Stationary</li>
+        <li data-category="Groceries">Groceries</li>
+        <li data-category="Pet Supplies">Pet Supplies</li>
+        <li data-category="Personal Care">Personal Care</li>
+        <li data-category="Household">Household</li>
+      </ul>
+
+      <h3>Filter by Price</h3>
+      <input type="range" id="price-filter" min="0" max="100000" value="100000" />
+<span>Max: ৳<span id="price-value">100000</span></span>
+
+    </aside>
+
+    <!-- Product Grid -->
+    <section id="products" class="product-grid">
+      <!-- Products will be dynamically loaded here -->
+    </section>
+  </section>
+<button id="back-to-top" title="Go to top">↑</button>
+
+  <!-- Scripts -->
+  <script src="scripts/home.js"></script>
+  <script src="scripts/navbarLoader.js"></script>
+</body>
+</html>

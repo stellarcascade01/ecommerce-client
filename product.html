@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Product Details</title>
+<link rel="stylesheet" href="css/product.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+<body>
+
+  <div id="navbar-placeholder"></div>
+  <div class="container" style="padding-top: 100px;">
+    <div class="product">
+      <div class="product-image">
+        <img id="product-img" src="" alt="Product Image" />
+      </div>
+      <div class="product-info">
+        <h1 id="product-title"></h1>
+        <div class="price" id="product-price"></div>
+        <div class="description" id="product-description"></div>
+        <div class="actions">
+          <button class="add-to-cart" id="add-to-cart-btn">Add to Cart</button>
+          <button class="buy-now" id="buy-now-btn">Buy Now</button>
+          <div class="quantity-control" style="margin-left:20px;display:inline-flex;align-items:center;gap:8px;">
+            <button id="decrease-qty">–</button>
+            <span id="quantity">1</span>
+            <button id="increase-qty">+</button>
+          </div>
+         <div id="seller-shop-link" style="margin-top:1.2em;"></div>
+        </div>
+        <!-- YouTube Video Section -->
+        <div id="product-video-container" style="margin-top:2rem;display:none;"></div>
+      </div>
+    </div>
+    <!-- Review Section -->
+    <div class="reviews">
+      <h2>Reviews</h2>
+      <div id="reviews-list"></div>
+      <div id="review-form-container"></div>
+    </div>
+    <!-- Recommended Products BELOW reviews -->
+    <div class="recommended-section" style="margin:2.5rem 0 0 0;background:#f7faf7;border-radius:14px;box-shadow:0 2px 12px rgba(60,120,80,0.06);padding:2rem 1.5rem 1.5rem 1.5rem;">
+      <h3 style="margin-top:0;margin-bottom:1.2rem;color:#356842;">Recommended Products</h3>
+      <div id="recommended-products" style="display:flex;gap:1.2rem;overflow-x:auto;"></div>
+    </div>
+  </div>
+
+
+  <script src="scripts/product.js"></script>
+  <script src="scripts/navbarLoader.js"></script>
+  <script>
+    // Show YouTube video if product has a youtubeUrl
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for product.js to load product details
+      setTimeout(function() {
+        // Use product.js to render product details into new structure
+        // No need to parse from dataset, product.js will handle DOM
+      }, 400); // Wait for product.js to finish rendering
+    });
+  </script>
+</body>
+
+</html>

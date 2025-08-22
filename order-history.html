@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Past Orders</title>
+  <link rel="stylesheet" href="css/order-history.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div class="orders-wrapper">
+    <h2>My Past Orders</h2>
+    <div id="orders-list">
+      <!-- Orders will be loaded here -->
+    </div>
+    <div id="no-orders" style="display:none;text-align:center;color:#888;margin-top:2.5rem;">No past orders found.</div>
+  </div>
+  <script src="scripts/navbarLoader.js"></script>
+  <script>
+    // Fetch orders from backend and display product details
+    document.addEventListener('DOMContentLoaded', async function() {
+      const list = document.getElementById('orders-list');
+      const noOrders = document.getElementById('no-orders');
+      let token = localStorage.getItem('token');
+      let user = JSON.parse(localStorage.getItem('user'));
+      if (!token || !user) {
+        list.innerHTML = '';
+        noOrders.style.display = 'block';
+        return;
+      }
+      try {
+        const res = await fetch('http://localhost:5000/api/orders', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) throw new Error('Failed to fetch orders');
+        let orders = await res.json();
+        // Debug: log orders and user
+        console.log('[OrderHistory] Raw orders from backend:', orders);
+        console.log('[OrderHistory] Current user:', user);
+        // Filter orders for this user (by email or userId if available)
+        const filteredOrders = orders.filter(order => {
+          if (order.userId && user._id) {
+            // Debug: log comparison
+            if (String(order.userId) === String(user._id)) return true;
+          }
+          if (order.email && user.email) {
+            if (order.email === user.email) return true;
+          }
+          return false;
+        });
+        if (!filteredOrders.length) {
+          list.innerHTML = '';
+          noOrders.style.display = 'block';
+          // Debug: show warning if orders exist but none match
+          if (orders.length > 0) {
+            const warn = document.createElement('div');
+            warn.style.color = 'orange';
+            warn.style.textAlign = 'center';
+            warn.style.marginTop = '1.5rem';
+            warn.textContent = 'Orders exist in the database, but none are linked to your account. Check userId/email in orders.';
+            list.appendChild(warn);
+          }
+          return;
+        }
+        noOrders.style.display = 'none';
+        list.innerHTML = filteredOrders.map(order => {
+          // Calculate total and show product details
+          let total = 0;
+          let itemsHtml = (order.products || []).map(item => {
+            const prod = item.productId || {}; // Populated product
+            const img = prod.image || '';
+            const name = prod.name || '';
+            const price = prod.price || 0;
+            const qty = item.quantity || 1;
+            total += price * qty;
+            return `
+              <div class="order-item">
+                <img src="${img}" alt="${name}">
+                <div>
+                  <div><strong>${name}</strong></div>
+                  <div>Qty: ${qty}</div>
+                  <div>Price: \tf${price.toFixed(2)}</div>
+                </div>
+              </div>
+            `;
+          }).join('');
+          return `
+            <div class="order-card">
+              <div class="order-header">
+                <span class="order-id">Order #${order._id || ''}</span>
+                <span class="order-date">${order.createdAt ? new Date(order.createdAt).toLocaleString() : ''}</span>
+              </div>
+              <div class="order-items">
+                ${itemsHtml}
+              </div>
+              <div class="order-total"><strong>Total:</strong>  \tf${total.toFixed(2)}</div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        list.innerHTML = '';
+        noOrders.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
